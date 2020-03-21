@@ -1,0 +1,15 @@
+.searchbox {
+	position: relative;
+	ul.dropdown-search-list {
+		display: none;
+		position: absolute;
+		background-color: white;
+		top: 3rem;
+		left: 50%;
+		transform: translate(-50%);
+		width: 299px;
+		&.visible {
+			display: unset;
+		}
+	}
+}
