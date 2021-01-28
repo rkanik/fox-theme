@@ -1,0 +1,21 @@
+.course-faq {
+	li {
+		transition: background-color 0.2s ease-in;
+	}
+	.uk-accordion-content {
+		max-height: 0 !important;
+		padding: 0 !important;
+		transition: max-height 0.3s ease-in-out;
+		p {
+			padding: 1rem 1.1rem;
+			transition: padding 0.2s ease-in;
+		}
+		&.expanded {
+			max-height: 24rem !important;
+			transition: max-height 0.3s ease-in-out;
+			p {
+				padding: 1rem 1.1rem;
+			}
+		}
+	}
+}

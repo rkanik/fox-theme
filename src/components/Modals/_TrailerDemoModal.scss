@@ -1,0 +1,19 @@
+.c-modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	.trailer-modal {
+		height: 350px;
+		width: 700px;
+	}
+	.overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background-color: rgba(165, 42, 42, 0.603);
+		z-index: 15000000 !important;
+	}
+}

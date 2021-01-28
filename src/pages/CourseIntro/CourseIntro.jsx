@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import "./_CourseIntro.scss"
 
 // Components
 import CourseDetails from "../../components/CourseDetails/CourseDetails"
@@ -27,6 +28,19 @@ const CourseIntro = () => {
       { label: "Reviews", active: false, classes: '' },
    ])
 
+   const mapStars = (rating, length) => {
+      if (!length) {
+         let floored = Math.floor(rating)
+         let stars = Array.from('s'.repeat(floored)).map((s, i) => <span key={i} className={s + 'tar'} />)
+         if (rating > floored) stars.push(<span className='star half' key={floored + 1} />)
+         return stars
+      } else {
+         return Array.from('s'.repeat(length)).map((s, i) => {
+            if (i < rating) return <span key={i} className={s + 'tar'} />
+            return <span key={i} className={s + 'tar empty'} />
+         })
+      }
+   }
 
    const handleTabChange = index => {
       setTabs([...tabs].map((t, i) =>
@@ -38,38 +52,29 @@ const CourseIntro = () => {
 
    return (
       <div className="page-content">
-
          {/* Course Details */}
          <CourseDetailsWrapper>
-            <CourseDetails />
+            <CourseDetails mapStars={mapStars} />
             <TabSwitcher onChange={v => handleTabChange(v)} tabs={tabs} />
          </CourseDetailsWrapper>
 
          <TabContainer>
             <UkColumn width="2-3" className="uk-first-column">
                <ul id="course-intro-tab" className="uk-switcher mt-4">
-                  <li className={tabs[0].classes} >
-                     <CourseCurriculum />
-                  </li>
-                  <li className={tabs[1].classes} >
-                     <CourseDescription />
-                  </li>
-                  <li className={tabs[2].classes} >
-                     <CourseFaq />
-                  </li>
-                  <li className={tabs[3].classes} >
-                     <CourseAnnouncement />
-                  </li>
+                  <li className={tabs[0].classes} ><CourseCurriculum /></li>
+                  <li className={tabs[1].classes} ><CourseDescription /></li>
+                  <li className={tabs[2].classes} ><CourseFaq /></li>
+                  <li className={tabs[3].classes} ><CourseAnnouncement /></li>
                   <li className={tabs[4].classes} >
                      <CourseReviewSummary>
-                        <ReviewSummary />
-                        <CourseReviews />
+                        <ReviewSummary mapStars={mapStars} />
+                        <CourseReviews mapStars={mapStars} />
                         <SubmitReview />
                      </CourseReviewSummary>
                   </li>
                </ul>
             </UkColumn>
-            <UkColumn width="1-3">
+            <UkColumn width="1-3" className="col-trailer-card">
                <CourseTrailerCard />
             </UkColumn>
          </TabContainer>
@@ -89,7 +94,7 @@ const CourseDetailsWrapper = ({ children }) => (
 
 const TabContainer = ({ children }) => (
    <div className="container">
-      <div className="uk-grid-large mt-4 uk-grid">
+      <div className="uk-grid-large mt-4 uk-grid uk-column-stack">
          {children}
       </div>
    </div>

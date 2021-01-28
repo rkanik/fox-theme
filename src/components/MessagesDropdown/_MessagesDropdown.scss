@@ -1,0 +1,17 @@
+.messages-dd {
+	&.uk-open {
+		left: 859.359px;
+		top: 58px;
+	}
+	.messages {
+		width: 355px;
+		height: 316px;
+		overflow: hidden scroll;
+		&::-webkit-scrollbar {
+			width: 0.4em;
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: #bdbdbd;
+		}
+	}
+}

@@ -1,0 +1,21 @@
+@media screen and (max-width: 960px) {
+	.course-card-trailer {
+		position: relative !important;
+		margin: 0 auto;
+	}
+}
+@media (min-width: 768px) {
+	.uk-first-column {
+		width: 50% !important;
+	}
+}
+@media (min-width: 1024px) {
+	.uk-first-column {
+		width: 52% !important;
+	}
+}
+@media (min-width: 1535px) {
+	.course-card-trailer {
+		right: 8%;
+	}
+}

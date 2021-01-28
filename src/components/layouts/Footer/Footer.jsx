@@ -2,7 +2,7 @@ import React from 'react'
 import "./_footer.scss"
 
 const Footer = () => (
-   <div className="footer">
+   <footer className="footer">
       <div className="container">
          <div uk-grid='true' className='uk-grid'>
             <div className="uk-width-1-3@m uk-first-column">
@@ -62,6 +62,6 @@ const Footer = () => (
             </div>
          </div>
       </div>
-   </div>
+   </footer>
 )
 export default Footer

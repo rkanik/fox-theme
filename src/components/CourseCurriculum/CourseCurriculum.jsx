@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import "./_CourseCurriculum.scss"
+
 const CourseCurriculum = () => {
 
    const [lessons] = useState([
@@ -50,24 +52,30 @@ const CourseCurriculum = () => {
    ])
 
    return (
-      <ul className="course-curriculum uk-accordion" uk-accordion="multiple: true">
+      <ul className="course-curriculum uk-accordion">
          {lessons.map((lesson, index) => (
-            <li className={lesson.expanded ? 'uk-open' : ''} onClick={() => { lesson.expanded = !lesson.expanded }} key={index}>
-               <Link className="uk-accordion-title" to="#">{lesson.subject}</Link>
-               <div className="uk-accordion-content">
-                  <ul className={`course-curriculum-list uk-transition`} hidden={!lesson.expanded} aria-hidden={!lesson.expanded}>
+            <li
+               onClick={() => { lesson.expanded = !lesson.expanded }}
+               className={`${lesson.expanded ? 'uk-open' : ''} mb-3`}
+               key={index}
+            >
+               <Link className="uk-accordion-title" to="#" > {lesson.subject}</Link>
+               <div className={`uk-accordion-content ${lesson.expanded ? 'expanded' : ''}`}>
+                  <ul className='course-curriculum-list'>
                      {lesson.videos.map((video, vi) => (
                         <li key={vi}>
                            {video.title}
-                           {video.preview && <Link to="#trailer-modal" className="uk-toggle">Preview</Link>}
+                           {video.preview &&
+                              <Link to="#trailer-modal" className="uk-toggle">Preview</Link>
+                           }
                            <span>{video.duration}</span>
                         </li>
                      ))}
                   </ul>
                </div>
-            </li>
+            </li >
          ))}
-      </ul>
+      </ul >
    )
 }
 

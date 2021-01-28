@@ -1,6 +1,6 @@
 .responsive-tab {
 	position: relative;
-	z-index: 1;
+	z-index: 0;
 	clear: both;
 	width: 100%;
 	height: 52px;
@@ -286,4 +286,16 @@
 	width: 36px;
 	-webkit-transition: all 0.3s ease-out;
 	transition: all 0.3s ease-out;
+}
+@media screen and (max-width: 636px) {
+	.responsive-tab {
+		ul {
+			overflow: hidden;
+			li {
+				a {
+					margin: 0 4px !important;
+				}
+			}
+		}
+	}
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 
-const CourseDetails = () => {
+const CourseDetails = ({ mapStars }) => {
 
    const [course] = useState({
       title: "Learn JavaScript From Scratch",
@@ -9,7 +9,7 @@ const CourseDetails = () => {
       createdBy: "Jonathan Madano",
       enrolled: 1200,
       lastUpdated: "12/03/2020",
-      rating: 4.9
+      rating: 4.5
    })
 
    return (
@@ -21,14 +21,10 @@ const CourseDetails = () => {
                <li>
                   <div className="star-rating">
                      <span className="avg">{course.rating}</span>
-                     <span className="star" />
-                     <span className="star" />
-                     <span className="star" />
-                     <span className="star" />
-                     <span className="star" />
+                     {mapStars(course.rating)}
                   </div>
                </li>
-               <li><i className="icon-feather-users"></i>{course.enrolled} Enrolled</li>
+               <li><i className="icon-feather-users"></i>{course.enrolled}Enrolled</li>
             </ul>
          </div>
 

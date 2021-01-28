@@ -1,18 +1,40 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 // Components
 import Router from "../router/router"
 import Header from "../components/layouts/Header/Header"
 import Footer from "../components/layouts/Footer/Footer"
 
-const App = () => (<>
-   <div id="wrapper">
-      <Header />
-      <NavOverlay />
-      <Router />
-   </div>
-   <Footer />
-</>)
+//Modals
+//import TrailerDemoModal from "../components/Modals/TrailerDemoModal"
+
+const App = () => {
+
+   useEffect(() => {
+
+      console.log('useEffect');
+
+      if (!('localStorage' in window)) return;
+      var nightMode = localStorage.getItem('gmtNightMode');
+
+      console.log(nightMode);
+
+      if (nightMode) {
+         document.documentElement.className += ' night-mode';
+      }
+   })
+
+   return (
+      <>
+         <div id="wrapper">
+            <Header />
+            <NavOverlay />
+            <Router />
+         </div>
+         <Footer />
+      </>
+   )
+}
 
 // Overlay on mobile view
 const NavOverlay = () => (
@@ -31,8 +53,5 @@ const NavOverlay = () => (
       ></a>
    </div>
 )
-
-
-
 
 export default App
